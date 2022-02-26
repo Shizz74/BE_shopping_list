@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const productSchema = require('../models/product');
 
+
+//Create a new product
 router.post('/product', async (req, res) => {
 
     const productExist = await productSchema.findOne({ name: req.body.name });
@@ -21,6 +23,28 @@ router.post('/product', async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
+})
 
+//Get all products
+router.get('/products', async (req, res) => {
+    //"Find" with empty parametr (object) return all record
+    productSchema.find({}).then(function(products){
+        res.send(products);
+    })
+})
+
+//Get specific product
+router.get('/product/:id', async (req, res) => {
+    productSchema.findById({_id: req.params.id}).then(function(product){
+        res.send(product);
+    })
+})
+
+//Delete specific product
+router.delete('/product/:id', async (req, res) => {
+    productSchema.findByIdAndDelete({_id: req.params.id}).then(function(product){
+        res.send(product);
+    })
+    //Add error when e.g element doesn't exist
 })
 module.exports = router;
