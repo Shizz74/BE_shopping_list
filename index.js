@@ -32,6 +32,10 @@ app.use(productRoute);
 
 const port = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+  res.send("Welcom to Jamaica");
+})
+
 app.listen(port, async () => {
   console.log(`Server is running at port ${port}`);
 });
