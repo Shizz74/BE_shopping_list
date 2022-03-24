@@ -2,7 +2,7 @@ const router = require('express').Router();
 const categorySchema = require('../models/category');
 
 
-//Create a new product
+//Create a new category
 router.post('/category', async (req, res) => {
 
     const categoryExist = await categorySchema.findOne({ name: req.body.name });
@@ -10,9 +10,10 @@ router.post('/category', async (req, res) => {
 
     console.log(req);
 
-    //Create product
+    //Create category
     const category = new categorySchema({
-        name: req.body.name
+        name: req.body.name,
+        color: categoryColor
     });
 
     try {
@@ -23,7 +24,7 @@ router.post('/category', async (req, res) => {
     }
 })
 
-//Get all products
+//Get all categries
 router.get('/category', async (req, res) => {
     //"Find" with empty parametr (object) return all record
     categorySchema.find({}).then(function(categories){
@@ -31,14 +32,14 @@ router.get('/category', async (req, res) => {
     })
 })
 
-//Get specific product
+//Get specific category
 router.get('/category/:id', async (req, res) => {
     categorySchema.findById({_id: req.params.id}).then(function(category){
         res.send(category);
     })
 })
 
-//Delete specific product
+//Delete specific category
 router.delete('/category/:id', async (req, res) => {
     categorySchema.findByIdAndDelete({_id: req.params.id}).then(function(product){
         res.send(product);

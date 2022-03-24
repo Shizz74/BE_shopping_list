@@ -8,6 +8,7 @@ dotenv.config();
 //Imports Routes
 const productRoute = require('./routes/products');
 const categoryRoute = require('./routes/category');
+const colorRoute = require('./routes/colors');
 
 const app = express();
 
@@ -29,7 +30,10 @@ mongoose
     console.log(err);
   });
 
-app.use(productRoute, categoryRoute);
+app.use(
+  productRoute, 
+  categoryRoute, 
+  colorRoute);
 
 const port = process.env.PORT || 3000;
 
