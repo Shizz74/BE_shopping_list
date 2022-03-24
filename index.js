@@ -7,6 +7,7 @@ dotenv.config();
 
 //Imports Routes
 const productRoute = require('./routes/products');
+const categoryRoute = require('./routes/category');
 
 const app = express();
 
@@ -28,13 +29,9 @@ mongoose
     console.log(err);
   });
 
-app.use(productRoute);
+app.use(productRoute, categoryRoute);
 
 const port = process.env.PORT || 3000;
-
-app.get('/', (req, res) => {
-  res.send("Welcom to Jamaica");
-})
 
 app.listen(port, async () => {
   console.log(`Server is running at port ${port}`);
