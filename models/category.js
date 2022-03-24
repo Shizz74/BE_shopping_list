@@ -4,6 +4,9 @@ const categorySchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  color: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now
