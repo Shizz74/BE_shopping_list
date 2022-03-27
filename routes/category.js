@@ -10,10 +10,15 @@ router.post('/category', async (req, res) => {
 
     console.log(req);
 
+    const colorExist = await categorySchema.findOne({ color: req.body.name });
+    if (colorExist) return res.status(400).send('color_exist');
+
+    console.log(req);
+
     //Create category
     const category = new categorySchema({
         name: req.body.name,
-        color: categoryColor
+        color: req.body.color
     });
 
     try {
