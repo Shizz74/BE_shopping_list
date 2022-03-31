@@ -46,9 +46,17 @@ router.get('/category/:id', async (req, res) => {
 
 //Delete specific category
 router.delete('/category/:id', async (req, res) => {
-    categorySchema.findByIdAndDelete({_id: req.params.id}).then(function(product){
-        res.send(product);
+    categorySchema.findByIdAndDelete({_id: req.params.id}).then(function(category){
+        res.send(category);
     })
     //Add error when e.g element doesn't exist
+})
+
+//Edit specific category
+
+router.post('/category/update/:id',  async (req, res) => {
+     categorySchema.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(req){
+         res.send('req');
+     })
 })
 module.exports = router;
