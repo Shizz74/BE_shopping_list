@@ -54,7 +54,7 @@ router.delete('/category/:id', async (req, res) => {
 
 //Edit specific category
 
-router.post('/category/update/:id',  async (req, res) => {
+router.put('/category/update/:id',  async (req, res) => {
      categorySchema.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(req){
          res.send('req');
      })
