@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
   },
   categoryId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'category'
+      ref: 'categories'
   },
   date: {
     type: Date,
