@@ -24,7 +24,7 @@ router.post('/product', async (req, res) => {
     }
 })
 
-//Get all products
+//Get all products and connect them with category from other collection
 router.get('/products', async (req, res) => {
     //"Find" with empty parametr (object) return all record
     productSchema.find({})
