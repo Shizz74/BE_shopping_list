@@ -13,8 +13,7 @@ router.post('/product', async (req, res) => {
     //Create product
     const product = new productSchema({
         name: req.body.name,
-        desc: req.body.desc,
-        category: req.body.category
+        categoryId: req.body.categoryId
     });
 
     try {
@@ -28,7 +27,9 @@ router.post('/product', async (req, res) => {
 //Get all products
 router.get('/products', async (req, res) => {
     //"Find" with empty parametr (object) return all record
-    productSchema.find({}).then(function(products){
+    productSchema.find({})
+    .populate("categoryId")
+    .then(function(products){
         res.send(products);
     })
 })

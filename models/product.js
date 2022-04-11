@@ -4,11 +4,9 @@ const productSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  desc: {
-      type: String
-  },
-  category: {
-      type: String
+  categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'category'
   },
   date: {
     type: Date,
