@@ -48,4 +48,12 @@ router.delete('/product/:id', async (req, res) => {
     })
     //Add error when e.g element doesn't exist
 })
+
+//Edit specific product
+
+router.put('/product/update/:id',  async (req, res) => {
+    productSchema.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(req){
+        res.send(req);
+    })
+})
 module.exports = router;
