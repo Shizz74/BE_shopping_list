@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const listsSchema = require('../models/category');
+const listsSchema = require('../models/lists');
 
 
 //Create a new list
