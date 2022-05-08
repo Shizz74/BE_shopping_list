@@ -13,7 +13,8 @@ router.post('/product', async (req, res) => {
     //Create product
     const product = new productSchema({
         name: req.body.name,
-        categoryId: req.body.categoryId
+        categoryId: req.body.categoryId,
+        unit: req.body.unit
     });
 
     try {
