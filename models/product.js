@@ -8,6 +8,9 @@ const productSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'categories'
   },
+  unit: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now
