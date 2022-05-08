@@ -8,6 +8,7 @@ dotenv.config();
 //Imports Routes
 const productRoute = require('./routes/products');
 const categoryRoute = require('./routes/category');
+const listsRoute = require('./routes/lists');
 
 const app = express();
 
@@ -31,7 +32,8 @@ mongoose
 
 app.use(
   productRoute, 
-  categoryRoute
+  categoryRoute,
+  listsRoute
   );
 
 const port = process.env.PORT || 3000;
