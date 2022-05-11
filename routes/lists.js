@@ -45,10 +45,26 @@ router.delete('/list/:id', async (req, res) => {
 })
 
 //Edit specific list
-
 router.put('/list/update/:id',  async (req, res) => {
      listsSchema.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(req){
          res.send(req);
      })
 })
+
+//Add product to list 
+router.put('/list/add-product/:id', async (req, res) => {
+    console.log(req.body.items.productID);
+    listsSchema.updateOne({_id: req.params.id}, {
+        $push: {
+            products: [{
+                "productID": req.body.items.productID
+            }]
+        }
+    })
+    .then(function(req){
+        res.send(req);
+    })
+})
+
+
 module.exports = router;

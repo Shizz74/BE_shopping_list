@@ -4,6 +4,16 @@ const listsSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  products: [{
+    productID: {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'products'
+    },
+    active: {
+      type: Boolean,
+      default: true
+    }
+  }],
   date: {
     type: Date,
     default: Date.now
