@@ -5,7 +5,7 @@ const listsSchema = new mongoose.Schema({
     type: String,
   },
   products: [{
-    productID: {
+    product: {
       type: mongoose.Schema.Types.ObjectId, 
       ref: 'products'
     },

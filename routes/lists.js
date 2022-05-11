@@ -31,7 +31,9 @@ router.get('/lists', async (req, res) => {
 
 //Get specific list
 router.get('/list/:id', async (req, res) => {
-    listsSchema.findById({_id: req.params.id}).then(function(list){
+    listsSchema.findOne({_id: req.params.id})
+    .populate("products.product")
+    .then(function(list){
         res.send(list);
     })
 })
@@ -52,12 +54,12 @@ router.put('/list/update/:id',  async (req, res) => {
 })
 
 //Add product to list 
+// To add ---- Check if product are already on the list
 router.put('/list/add-product/:id', async (req, res) => {
-    console.log(req.body.items.productID);
     listsSchema.updateOne({_id: req.params.id}, {
         $push: {
             products: [{
-                "productID": req.body.items.productID
+                "product": req.body.items.product
             }]
         }
     })
