@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
   unit: {
     type: String,
   },
-  defaultAmount: {
+  amount: {
     type: Number,
   },
   amountToBuy: {
