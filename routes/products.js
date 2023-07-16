@@ -9,12 +9,23 @@ router.post('/product', async (req, res) => {
     if (productExist) return res.status(400).send('product_exist');
 
     console.log(req);
+    let amount;
+
+    if(req.body.unit === 'sztuk') {
+        amount = 1;
+    } else if (req.body.unit === 'gram') {
+        amount = 100;
+    } else if (req.body.unit === 'ml') {
+        amount = 1000;
+    }
+
 
     //Create product
     const product = new productSchema({
         name: req.body.name,
         categoryId: req.body.categoryId,
-        unit: req.body.unit
+        unit: req.body.unit,
+        amount: amount,
     });
 
     try {
