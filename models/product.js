@@ -11,6 +11,9 @@ const productSchema = new mongoose.Schema({
   unit: {
     type: String,
   },
+  defaultAmount: {
+    type: Number,
+  },
   date: {
     type: Date,
     default: Date.now
