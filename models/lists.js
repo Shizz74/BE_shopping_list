@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
+const productSchema = require('./product');
 
 const listsSchema = new mongoose.Schema({
   name: {
     type: String,
   },
   products: [{
-    product: {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'products'
-    },
+    ...productSchema,
     active: {
       type: Boolean,
       default: true
