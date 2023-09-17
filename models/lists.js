@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
-const productSchema = require('./product');
+const productSchema = require('./product').schema;
 
 const listsSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  products: [{
-    ...productSchema,
+  products: {
+    product: {
+      type: productSchema
+    },
     active: {
       type: Boolean,
       default: true
     }
-  }],
+  },
   date: {
     type: Date,
     default: Date.now

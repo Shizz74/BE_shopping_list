@@ -56,10 +56,16 @@ router.put('/list/update/:id',  async (req, res) => {
 //Add product to list 
 // To add ---- Check if product are already on the list
 router.put('/list/add-product/:id', async (req, res) => {
-    listsSchema.updateOne({_id: req.params.id}, {
+
+    let data = req.body;
+    console.log('----------------------------------------------------');
+    console.log(data);
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+    listsSchema.findByIdAndDelete({_id: req.params.id}),
+    listsSchema.findOneAndUpdate({_id: req.params.id}, {
         $push: {
             products: [{
-                "product": req.body.items.product
+                "product": req.body
             }]
         }
     })
