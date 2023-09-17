@@ -56,11 +56,6 @@ router.put('/list/update/:id',  async (req, res) => {
 //Add product to list 
 // To add ---- Check if product are already on the list
 router.put('/list/add-product/:id', async (req, res) => {
-
-    let data = req.body[0];
-    console.log('----------------------------------------------------');
-    console.log(data);
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
     listsSchema.updateOne({_id: req.params.id}, {
         $set: {
             products: []
