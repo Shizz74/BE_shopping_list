@@ -32,7 +32,6 @@ router.get('/lists', async (req, res) => {
 //Get specific list
 router.get('/list/:id', async (req, res) => {
     listsSchema.findOne({_id: req.params.id})
-    .populate("products.product")
     .then(function(list){
         res.send(list);
     })
