@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const products = require('./product');
 
 const listsSchema = new mongoose.Schema({
   name: {
@@ -6,14 +7,7 @@ const listsSchema = new mongoose.Schema({
   },
   products: [
     {
-      _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'products'
-      },
-      active: {
-        type: Boolean,
-        default: true
-      }
+      type: products.schema,
     }
   ],
   date: {

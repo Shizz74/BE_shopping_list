@@ -17,6 +17,10 @@ const productSchema = new mongoose.Schema({
   amountToBuy: {
     type: Number,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
   date: {
     type: Date,
     default: Date.now
