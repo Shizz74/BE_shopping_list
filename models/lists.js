@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const products = require('./product');
+const category = require('./category');
 
 const listsSchema = new mongoose.Schema({
   name: {
@@ -7,13 +7,35 @@ const listsSchema = new mongoose.Schema({
   },
   products: [
     {
-      type: products.schema,
+      name: {
+        type: String,
+      },
+      categoryId: {
+        type: category.schema,
+      },
+      unit: {
+        type: String,
+      },
+      amount: {
+        type: Number,
+      },
+      amountToBuy: {
+        type: Number,
+      },
+      active: {
+        type: Boolean,
+        default: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      },
     }
   ],
   date: {
     type: Date,
     default: Date.now
-},
+  },
 });
 
 // here we choose collection name and a schema
