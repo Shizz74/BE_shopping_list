@@ -26,6 +26,7 @@ router.post('/product', async (req, res) => {
         categoryId: req.body.categoryId,
         unit: req.body.unit,
         amount: amount,
+        amountToBuy: amountToBuy
     });
 
     try {
